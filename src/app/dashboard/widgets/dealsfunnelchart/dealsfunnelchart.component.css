@@ -1,0 +1,10 @@
+.widget-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.widget-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0 0 1.5rem; }
+.funnel-container { display: flex; flex-direction: column; gap: 1rem; }
+.funnel-stage { display: flex; flex-direction: column; gap: 0.375rem; }
+.stage-header { display: flex; justify-content: space-between; align-items: center; }
+.stage-name { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
+.stage-count { font-size: 0.75rem; color: var(--text-secondary); }
+.progress-track { height: 8px; background: var(--border-color); border-radius: 9999px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 9999px; transition: width 0.5s; }
+.stage-value { font-size: 0.75rem; color: var(--text-secondary); text-align: right; }

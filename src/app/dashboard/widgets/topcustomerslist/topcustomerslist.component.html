@@ -1,0 +1,26 @@
+<div class="widget-card">
+  <h3 class="widget-title">Top Customers</h3>
+  <div class="list-container" *ngIf="customers.length > 0; else emptyState">
+    <div class="list-item" *ngFor="let item of customers; let i = index">
+      <div class="rank-badge">{{ i + 1 }}</div>
+      <div class="customer-avatar">{{ getInitials(item.customer.firstName + ' ' + item.customer.lastName) }}</div>
+      <div class="customer-info">
+        <div class="customer-name">{{ item.customer.firstName }} {{ item.customer.lastName }}</div>
+        <div class="customer-company" *ngIf="item.customer.company">{{ item.customer.company }}</div>
+      </div>
+      <div class="customer-stats">
+        <div class="stat">
+          <span class="stat-num">{{ item.totalDeals }}</span>
+          <span class="stat-lbl">deals</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">{{ '$' + formatValue(item.totalValue) }}</span>
+          <span class="stat-lbl">value</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyState>
+    <div class="empty-state">No customer data</div>
+  </ng-template>
+</div>

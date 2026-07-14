@@ -1,0 +1,37 @@
+    .page-container { padding: 24px; max-width: 1400px; margin: 0 auto; }
+    .filters { display: flex; gap: 12px; margin-bottom: 20px; }
+    .search-input { flex: 1; padding: 10px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-primary); color: var(--text-primary); font-size: 14px; outline: none; }
+    .search-input:focus { border-color: var(--accent-color); }
+    .filter-select { padding: 10px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-primary); color: var(--text-primary); font-size: 14px; outline: none; cursor: pointer; min-width: 180px; }
+    .table-container { background: var(--bg-secondary); border-radius: var(--radius); box-shadow: var(--shadow); overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th { text-align: left; padding: 14px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); border-bottom: 2px solid var(--border-color); white-space: nowrap; }
+    .data-table td { padding: 14px 16px; font-size: 14px; color: var(--text-primary); border-bottom: 1px solid var(--border-color); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(0,0,0,0.02); }
+    .cell-title { font-weight: 500; }
+    .cell-value { font-weight: 600; font-family: 'Courier New', monospace; }
+    .link { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+    .link:hover { text-decoration: underline; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+    .badge-info { background: rgba(var(--info), 0.15); color: var(--info); }
+    .badge-primary { background: rgba(var(--accent-color), 0.15); color: var(--accent-color); }
+    .badge-warning { background: rgba(var(--warning), 0.15); color: var(--warning); }
+    .badge-success { background: rgba(var(--success), 0.15); color: var(--success); }
+    .badge-danger { background: rgba(var(--danger), 0.15); color: var(--danger); }
+    .progress-bar { display: flex; align-items: center; gap: 8px; }
+    .progress-fill { height: 6px; background: var(--accent-color); border-radius: 3px; min-width: 20px; max-width: 100px; }
+    .progress-text { font-size: 13px; color: var(--text-secondary); white-space: nowrap; }
+    .actions-col { white-space: nowrap; text-align: right; }
+    .actions-col a, .actions-col button { margin-left: 4px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; border: none; transition: all 0.15s; }
+    .btn-primary { background: var(--accent-color); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); }
+    .btn-secondary:hover { background: var(--border-color); }
+    .btn-sm { padding: 5px 10px; font-size: 12px; }
+    .btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); }
+    .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover { opacity: 0.9; }
+    .empty-state { text-align: center; padding: 48px !important; color: var(--text-secondary); font-size: 15px; }

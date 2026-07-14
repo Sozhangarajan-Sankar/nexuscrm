@@ -1,0 +1,32 @@
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="topbar__menu-btn" (click)="menuToggle.emit()">☰</button>
+        <h2 class="topbar__title">{{ pageTitle }}</h2>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__search">
+          <input
+            type="text"
+            class="topbar__search-input"
+            placeholder="Search anything..."
+            (input)="search.emit($any($event.target).value)"
+          />
+        </div>
+        <button class="topbar__icon-btn" title="Notifications">
+          🔔
+          <span class="topbar__badge" *ngIf="notificationService.unreadCount() > 0">{{ notificationService.unreadCount() }}</span>
+        </button>
+        <div class="topbar__user" (click)="toggleUserMenu()">
+          <div class="topbar__avatar">{{ authService.currentUser()?.firstName?.charAt(0) }}{{ authService.currentUser()?.lastName?.charAt(0) }}</div>
+          <div class="topbar__user-menu" *ngIf="userMenuOpen">
+            <span class="topbar__user-name">{{ authService.currentUser()?.firstName }} {{ authService.currentUser()?.lastName }}</span>
+            <span class="topbar__user-email">{{ authService.currentUser()?.email }}</span>
+            <div class="topbar__menu-divider"></div>
+            <a class="topbar__menu-item" routerLink="/profile">👤 View Profile</a>
+            <a class="topbar__menu-item" routerLink="/settings">⚙️ Settings</a>
+            <div class="topbar__menu-divider"></div>
+            <button class="topbar__menu-item topbar__menu-item--danger" (click)="logout()">🚪 Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>

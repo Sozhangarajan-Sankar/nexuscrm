@@ -1,0 +1,21 @@
+<div class="widget-card">
+  <h3 class="widget-title">Recent Activity</h3>
+  <div class="feed-container" *ngIf="activities.length > 0; else emptyState">
+    <div class="feed-item" *ngFor="let activity of activities">
+      <div class="feed-icon" [style.background]="getActivityColor(activity.type)">
+        <span class="icon-text">{{ getActivityIcon(activity.type) }}</span>
+      </div>
+      <div class="feed-content">
+        <div class="feed-subject">{{ activity.subject }}</div>
+        <div class="feed-description" *ngIf="activity.description">{{ activity.description }}</div>
+        <div class="feed-meta">
+          <span *ngIf="activity.customerName" class="feed-customer">{{ activity.customerName }}</span>
+          <span class="feed-time">{{ activity.createdAt | date:'MMM d, h:mm a' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyState>
+    <div class="empty-state">No recent activity</div>
+  </ng-template>
+</div>

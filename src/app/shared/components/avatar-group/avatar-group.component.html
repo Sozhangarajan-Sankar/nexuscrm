@@ -1,0 +1,9 @@
+    <div class="avatar-group" [style.--avatar-size]="size + 'px'">
+      <div class="avatar-group__item" *ngFor="let user of visibleUsers" [title]="user.firstName + ' ' + user.lastName">
+        <img *ngIf="user.avatar" [src]="user.avatar" [alt]="user.firstName" class="avatar-group__img" />
+        <span *ngIf="!user.avatar" class="avatar-group__initials">{{ getInitials(user) }}</span>
+      </div>
+      <div class="avatar-group__more" *ngIf="overflow > 0" [title]="overflow + ' more'">
+        +{{ overflow }}
+      </div>
+    </div>

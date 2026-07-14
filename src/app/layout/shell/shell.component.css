@@ -1,0 +1,22 @@
+    :host {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .shell-content {
+      flex: 1;
+      margin-left: 240px;
+      display: flex;
+      flex-direction: column;
+      transition: margin-left 0.2s;
+    }
+    .shell-content--expanded {
+      margin-left: 60px;
+    }
+    .shell-main {
+      flex: 1;
+      padding: 1.5rem;
+      margin-top: 56px;
+      overflow-y: auto;
+      background: var(--bg-secondary);
+    }

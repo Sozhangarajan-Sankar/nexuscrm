@@ -1,0 +1,45 @@
+    <div class="table-wrapper">
+      <table class="data-table" *ngIf="!loading && data.length > 0">
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns" [class.sortable]="col.sortable" (click)="col.sortable && toggleSort(col.key)">
+              {{ col.label }}
+              <span class="sort-indicator" *ngIf="col.sortable">
+                <span *ngIf="sortKey !== col.key">↕</span>
+                <span *ngIf="sortKey === col.key && sortDir === 'asc'">↑</span>
+                <span *ngIf="sortKey === col.key && sortDir === 'desc'">↓</span>
+              </span>
+            </th>
+            <th class="actions-col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of pagedData; let i = index">
+            <td *ngFor="let col of columns">
+              <span *ngIf="!col.template || col.template === 'text'">{{ row[col.key] }}</span>
+              <app-status-badge *ngIf="col.template === 'status'" [status]="row[col.key]" type="generic"></app-status-badge>
+              <span *ngIf="col.template === 'currency'">{{ row[col.key] | currency }}</span>
+              <span *ngIf="col.template === 'date'">{{ row[col.key] | date }}</span>
+            </td>
+            <td class="actions-col">
+              <button class="btn-icon" title="View" (click)="view.emit(row)">👁️</button>
+              <button class="btn-icon" title="Edit" (click)="edit.emit(row)">✏️</button>
+              <button class="btn-icon btn-icon--danger" title="Delete" (click)="delete.emit(row)">🗑️</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <app-loading-skeleton *ngIf="loading" type="table" [rows]="pageSize"></app-loading-skeleton>
+
+      <app-empty-state *ngIf="!loading && data.length === 0"></app-empty-state>
+
+      <div class="table-footer" *ngIf="!loading && data.length > 0 && totalPages > 1">
+        <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+        <div class="pagination">
+          <button class="btn-page" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">‹</button>
+          <button class="btn-page" *ngFor="let p of pageNumbers" [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+          <button class="btn-page" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">›</button>
+        </div>
+      </div>
+    </div>

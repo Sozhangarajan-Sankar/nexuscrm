@@ -1,0 +1,180 @@
+import { Task } from './task.model';
+
+export const TASKS: Task[] = [
+  {
+    id: 1,
+    title: 'Follow up with Acme Corp',
+    description: 'Send proposal and schedule follow-up meeting.',
+    status: 'in-progress',
+    priority: 'high',
+    dueDate: new Date('2024-07-20'),
+    assignedTo: 1,
+    relatedTo: { type: 'customer', id: 1 },
+    createdAt: new Date('2024-07-01'),
+    updatedAt: new Date('2024-07-14')
+  },
+  {
+    id: 2,
+    title: 'Prepare quarterly report',
+    description: 'Compile Q2 sales data and generate report.',
+    status: 'todo',
+    priority: 'urgent',
+    dueDate: new Date('2024-07-25'),
+    assignedTo: 2,
+    createdAt: new Date('2024-07-10'),
+    updatedAt: new Date('2024-07-10')
+  },
+  {
+    id: 3,
+    title: 'Review Globex proposal',
+    description: 'Final review of the Globex SaaS proposal before sending.',
+    status: 'done',
+    priority: 'high',
+    dueDate: new Date('2024-07-15'),
+    assignedTo: 2,
+    relatedTo: { type: 'deal', id: 2 },
+    createdAt: new Date('2024-07-05'),
+    updatedAt: new Date('2024-07-14')
+  },
+  {
+    id: 4,
+    title: 'Update customer contact info',
+    description: 'Verify and update contact details for Umbrella Corp.',
+    status: 'todo',
+    priority: 'low',
+    dueDate: new Date('2024-07-30'),
+    assignedTo: 3,
+    relatedTo: { type: 'customer', id: 4 },
+    createdAt: new Date('2024-07-08'),
+    updatedAt: new Date('2024-07-08')
+  },
+  {
+    id: 5,
+    title: 'Send invoice to LexCorp',
+    description: 'Generate and send invoice for completed project.',
+    status: 'done',
+    priority: 'high',
+    dueDate: new Date('2024-07-12'),
+    assignedTo: 1,
+    relatedTo: { type: 'invoice', id: 3 },
+    createdAt: new Date('2024-07-09'),
+    updatedAt: new Date('2024-07-12')
+  },
+  {
+    id: 6,
+    title: 'Schedule demo for Initech',
+    description: 'Set up product demonstration for the Initech team.',
+    status: 'todo',
+    priority: 'medium',
+    dueDate: new Date('2024-07-28'),
+    assignedTo: 3,
+    relatedTo: { type: 'customer', id: 3 },
+    createdAt: new Date('2024-07-11'),
+    updatedAt: new Date('2024-07-11')
+  },
+  {
+    id: 7,
+    title: 'Negotiate terms with Cyberdyne',
+    description: 'Discuss pricing and contract terms for AI integration deal.',
+    status: 'in-progress',
+    priority: 'urgent',
+    dueDate: new Date('2024-07-22'),
+    assignedTo: 3,
+    relatedTo: { type: 'deal', id: 6 },
+    createdAt: new Date('2024-07-01'),
+    updatedAt: new Date('2024-07-15')
+  },
+  {
+    id: 8,
+    title: 'Call Nimbus Data follow-up',
+    description: 'Follow up on technical discovery call.',
+    status: 'done',
+    priority: 'medium',
+    dueDate: new Date('2024-07-14'),
+    assignedTo: 3,
+    relatedTo: { type: 'customer', id: 12 },
+    createdAt: new Date('2024-07-10'),
+    updatedAt: new Date('2024-07-14')
+  },
+  {
+    id: 9,
+    title: 'Prepare MegaCorp proposal',
+    description: 'Draft the digital transformation proposal for MegaCorp.',
+    status: 'in-progress',
+    priority: 'high',
+    dueDate: new Date('2024-08-01'),
+    assignedTo: 1,
+    relatedTo: { type: 'deal', id: 14 },
+    createdAt: new Date('2024-07-12'),
+    updatedAt: new Date('2024-07-15')
+  },
+  {
+    id: 10,
+    title: 'Review team timesheets',
+    description: 'Approve pending timesheets for the month.',
+    status: 'todo',
+    priority: 'medium',
+    dueDate: new Date('2024-07-26'),
+    assignedTo: 2,
+    createdAt: new Date('2024-07-13'),
+    updatedAt: new Date('2024-07-13')
+  },
+  {
+    id: 11,
+    title: 'Update deal stages in CRM',
+    description: 'Move appropriate deals to next pipeline stages.',
+    status: 'todo',
+    priority: 'low',
+    dueDate: new Date('2024-07-31'),
+    assignedTo: 1,
+    createdAt: new Date('2024-07-14'),
+    updatedAt: new Date('2024-07-14')
+  },
+  {
+    id: 12,
+    title: 'Massive Dynamic pricing review',
+    description: 'Get approval for special pricing on enterprise deal.',
+    status: 'in-progress',
+    priority: 'urgent',
+    dueDate: new Date('2024-07-18'),
+    assignedTo: 1,
+    relatedTo: { type: 'deal', id: 10 },
+    createdAt: new Date('2024-07-10'),
+    updatedAt: new Date('2024-07-15')
+  },
+  {
+    id: 13,
+    title: 'Onboard new customer DataLake IO',
+    description: 'Set up account and schedule training.',
+    status: 'todo',
+    priority: 'high',
+    dueDate: new Date('2024-07-25'),
+    assignedTo: 3,
+    relatedTo: { type: 'customer', id: 18 },
+    createdAt: new Date('2024-07-13'),
+    updatedAt: new Date('2024-07-13')
+  },
+  {
+    id: 14,
+    title: 'Clean up old leads',
+    description: 'Archive or re-engage leads older than 6 months.',
+    status: 'todo',
+    priority: 'low',
+    dueDate: new Date('2024-08-15'),
+    assignedTo: 2,
+    createdAt: new Date('2024-07-14'),
+    updatedAt: new Date('2024-07-14')
+  },
+  {
+    id: 15,
+    title: 'Send thank you note to Frobozz',
+    description: 'Send appreciation email for closing the deal.',
+    status: 'done',
+    priority: 'low',
+    dueDate: new Date('2024-07-11'),
+    assignedTo: 2,
+    relatedTo: { type: 'customer', id: 13 },
+    createdAt: new Date('2024-07-10'),
+    updatedAt: new Date('2024-07-11')
+  }
+];

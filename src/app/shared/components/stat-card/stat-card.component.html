@@ -1,0 +1,13 @@
+    <div class="stat-card" [style.--stat-color]="color">
+      <div class="stat-card__header">
+        <span class="stat-card__icon">{{ icon }}</span>
+        <span class="stat-card__trend" [class.trend-up]="trend === 'up'" [class.trend-down]="trend === 'down'" [class.trend-neutral]="trend === 'neutral'">
+          <span *ngIf="trend === 'up'">↑</span>
+          <span *ngIf="trend === 'down'">↓</span>
+          <span *ngIf="trend === 'neutral'">→</span>
+          {{ trendValue }}
+        </span>
+      </div>
+      <div class="stat-card__value">{{ value }}</div>
+      <div class="stat-card__label">{{ label }}</div>
+    </div>

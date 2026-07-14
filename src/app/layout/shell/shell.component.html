@@ -1,0 +1,7 @@
+    <app-sidebar [collapsed]="sidebarCollapsed()" (toggle)="sidebarCollapsed.set(!sidebarCollapsed())"></app-sidebar>
+    <div class="shell-content" [class.shell-content--expanded]="sidebarCollapsed()">
+      <app-topbar [pageTitle]="pageTitle" (menuToggle)="sidebarCollapsed.set(!sidebarCollapsed())"></app-topbar>
+      <main class="shell-main">
+        <router-outlet></router-outlet>
+      </main>
+    </div>

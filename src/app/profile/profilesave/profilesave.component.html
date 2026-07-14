@@ -1,0 +1,74 @@
+<div class="profile-page">
+  <app-page-header title="My Profile"></app-page-header>
+
+  <div class="profile-layout">
+    <div class="profile-sidebar">
+      <div class="avatar-section">
+        <div class="avatar-preview">
+          <img [src]="profileForm.get('avatar')?.value || 'https://i.pravatar.cc/150?u=default'" alt="Avatar" class="avatar-img" />
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-main">
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="profile-form">
+        <div class="form-section">
+          <h2 class="section-title">Personal Information</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" formControlName="firstName" class="form-input" placeholder="Enter first name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-input" placeholder="Enter last name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" formControlName="email" class="form-input" placeholder="Enter email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Username</label>
+              <input type="text" formControlName="username" class="form-input" placeholder="Enter username" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Avatar URL</label>
+            <input type="url" formControlName="avatar" class="form-input" placeholder="Enter avatar URL" (input)="onAvatarChange()" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="section-title">Change Password</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Current Password</label>
+              <input type="password" formControlName="currentPassword" class="form-input" placeholder="Enter current password" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">New Password</label>
+              <input type="password" formControlName="newPassword" class="form-input" placeholder="Enter new password" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirm Password</label>
+              <input type="password" formControlName="confirmPassword" class="form-input" placeholder="Confirm new password" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="notification" [ngClass]="{'show': showNotification}" [class.success]="notifType === 'success'" [class.error]="notifType === 'error'">
+    {{ notifMessage }}
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="widget-card">
+  <h3 class="widget-title">Deals Pipeline</h3>
+  <div class="funnel-container">
+    <div class="funnel-stage" *ngFor="let stage of stages; let i = index">
+      <div class="stage-header">
+        <span class="stage-name">{{ stage.stage }}</span>
+        <span class="stage-count">{{ stage.count }} deals</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" [style.width.%]="getProgressPercentage(stage.value)" [style.background]="getStageColor(i)" [title]="'$' + stage.value.toLocaleString()"></div>
+      </div>
+      <div class="stage-value">{{ '$' + stage.value.toLocaleString() }}</div>
+    </div>
+  </div>
+</div>

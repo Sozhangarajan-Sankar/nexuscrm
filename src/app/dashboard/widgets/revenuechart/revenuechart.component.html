@@ -1,0 +1,16 @@
+<div class="widget-card">
+  <h3 class="widget-title">Revenue Overview</h3>
+  <div class="chart-container">
+    <div class="y-axis">
+      <span *ngFor="let label of yAxisLabels" class="y-label">{{ label }}</span>
+    </div>
+    <div class="bars-wrapper">
+      <div class="bar-group" *ngFor="let item of data">
+        <div class="bar-column">
+          <div class="bar" [style.height.%]="getBarHeight(item.revenue)" [class.bar-max]="item.revenue === maxRevenue" [title]="item.month + ': $' + item.revenue.toLocaleString()"></div>
+        </div>
+        <div class="bar-label">{{ item.month }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+    .skeleton {
+      display: block;
+    }
+    .skeleton-line {
+      background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-color) 50%, var(--bg-secondary) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-text {
+      padding: 0.5rem 0;
+    }
+    .skeleton-card {
+      padding: 1.25rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-primary);
+    }
+    .skeleton-table {
+      padding: 0;
+    }
+    .skeleton-table__header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-secondary);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .skeleton-table__row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
