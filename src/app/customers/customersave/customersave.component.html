@@ -1,0 +1,85 @@
+<app-page-header [title]="isEditMode ? 'Edit Customer' : 'Add Customer'" [subtitle]="isEditMode ? 'Update customer information' : 'Add a new customer to your CRM'">
+  <button class="btn btn-outline" (click)="cancel()">Cancel</button>
+  <button class="btn btn-primary" (click)="onSubmit()" [disabled]="customerForm.invalid || isSaving">
+    {{ isSaving ? 'Saving...' : 'Save Customer' }}
+  </button>
+</app-page-header>
+<div class="form-card">
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <h3 class="section-title">Basic Information</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name <span class="required">*</span></label>
+          <input type="text" class="form-input" formControlName="firstName" placeholder="John" />
+          <div class="form-error" *ngIf="customerForm.get('firstName')?.invalid && customerForm.get('firstName')?.touched">Required</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name <span class="required">*</span></label>
+          <input type="text" class="form-input" formControlName="lastName" placeholder="Doe" />
+          <div class="form-error" *ngIf="customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched">Required</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email <span class="required">*</span></label>
+          <input type="email" class="form-input" formControlName="email" placeholder="john@example.com" />
+          <div class="form-error" *ngIf="customerForm.get('email')?.invalid && customerForm.get('email')?.touched">Valid email required</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input type="tel" class="form-input" formControlName="phone" placeholder="(555) 123-4567" />
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <h3 class="section-title">Company Information</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Company</label>
+          <input type="text" class="form-input" formControlName="company" placeholder="Acme Corp" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Position</label>
+          <input type="text" class="form-input" formControlName="position" placeholder="CEO" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-input" formControlName="status">
+            <option value="lead">Lead</option>
+            <option value="qualified">Qualified</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="churned">Churned</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Source</label>
+          <select class="form-input" formControlName="source">
+            <option value="">Select source</option>
+            <option value="website">Website</option>
+            <option value="referral">Referral</option>
+            <option value="conference">Conference</option>
+            <option value="outreach">Outreach</option>
+            <option value="social">Social Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <h3 class="section-title">Additional Details</h3>
+      <div class="form-group">
+        <label class="form-label">Tags</label>
+        <input type="text" class="form-input" formControlName="tags" placeholder="vip, enterprise, tech" />
+        <span class="form-hint">Comma separated tags</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-input form-textarea" formControlName="notes" placeholder="Enter any additional notes..." rows="4"></textarea>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+<app-page-header title="Dashboard" subtitle="Welcome to Nexus CRM"></app-page-header>
+<div class="dashboard-grid">
+  <div class="stats-row">
+    <app-stat-card *ngFor="let stat of stats" [label]="stat.label" [value]="stat.value" [icon]="stat.icon" [trend]="stat.trend" [trendValue]="stat.trendValue"></app-stat-card>
+  </div>
+  <div class="charts-row">
+    <app-revenuechart [data]="revenueData" class="chart-widget"></app-revenuechart>
+    <app-dealsfunnelchart [stages]="dealStages" class="chart-widget"></app-dealsfunnelchart>
+  </div>
+  <div class="feeds-row">
+    <app-recentactivityfeed [activities]="recentActivities" class="feed-widget"></app-recentactivityfeed>
+    <app-topcustomerslist [customers]="topCustomers" class="feed-widget"></app-topcustomerslist>
+  </div>
+</div>

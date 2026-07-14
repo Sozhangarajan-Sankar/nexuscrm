@@ -1,0 +1,25 @@
+<app-page-header title="Customers" subtitle="Manage your customer relationships">
+  <a routerLink="/customers/save" class="btn btn-primary">Add Customer</a>
+</app-page-header>
+<div class="search-bar">
+  <input type="text" class="search-input" placeholder="Search customers by name, email or company..." [(ngModel)]="searchQuery" (ngModelChange)="filterCustomers($event)" />
+</div>
+<app-data-table [columns]="columns" [data]="filteredCustomers" [cellTemplates]="cellTemplates" [actionsTemplate]="actionsTpl"></app-data-table>
+<app-confirm-dialog *ngIf="showDeleteDialog" title="Delete Customer" [message]="deleteMessage" (confirm)="onDeleteConfirm()" (cancel)="showDeleteDialog = false"></app-confirm-dialog>
+
+<ng-template #nameCell let-row>
+  {{ row.firstName }} {{ row.lastName }}
+</ng-template>
+<ng-template #statusCell let-row>
+  <app-status-badge [status]="row.status"></app-status-badge>
+</ng-template>
+<ng-template #createdCell let-row>
+  {{ row.createdAt | date:'MMM d, yyyy' }}
+</ng-template>
+<ng-template #actionsTpl let-row>
+  <div class="action-buttons">
+    <button class="btn btn-sm btn-outline" (click)="viewCustomer(row)">View</button>
+    <button class="btn btn-sm btn-outline" (click)="editCustomer(row)">Edit</button>
+    <button class="btn btn-sm btn-danger-outline" (click)="confirmDelete(row)">Delete</button>
+  </div>
+</ng-template>

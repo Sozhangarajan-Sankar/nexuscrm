@@ -1,0 +1,57 @@
+    <div class="page-container">
+      <app-page-header title="Deals">
+        <a routerLink="/deals/save" class="btn btn-primary">+ Add Deal</a>
+        <a routerLink="/deals/kanban" class="btn btn-secondary">Kanban Board</a>
+      </app-page-header>
+
+      <div class="filters">
+        <input type="text" class="search-input" placeholder="Search deals..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+        <select class="filter-select" [(ngModel)]="stageFilter" (change)="applyFilters()">
+          <option value="">All Stages</option>
+          <option *ngFor="let s of stages" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Value</th>
+              <th>Stage</th>
+              <th>Probability</th>
+              <th>Customer</th>
+              <th>Assigned To</th>
+              <th>Close Date</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let deal of filteredDeals">
+              <td class="cell-title">
+                <a [routerLink]="['/deals/view', deal.id]" class="link">{{ deal.title }}</a>
+              </td>
+              <td class="cell-value">{{ deal.value | currency:deal.currency:'symbol':'1.2-2' }}</td>
+              <td><span class="badge" [ngClass]="getStageClass(deal.stage)">{{ deal.stage }}</span></td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="deal.probability"></div>
+                  <span class="progress-text">{{ deal.probability }}%</span>
+                </div>
+              </td>
+              <td>{{ getCustomerName(deal.customerId) }}</td>
+              <td>{{ getUserName(deal.assignedTo) }}</td>
+              <td>{{ deal.expectedCloseDate | date:'mediumDate' }}</td>
+              <td class="actions-col">
+                <a [routerLink]="['/deals/view', deal.id]" class="btn btn-sm btn-outline">View</a>
+                <a [routerLink]="['/deals/save', deal.id]" class="btn btn-sm btn-outline">Edit</a>
+                <button class="btn btn-sm btn-danger" (click)="deleteDeal(deal.id)">Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredDeals.length === 0">
+              <td colspan="8" class="empty-state">No deals found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>

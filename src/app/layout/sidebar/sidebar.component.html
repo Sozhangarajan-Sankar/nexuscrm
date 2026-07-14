@@ -1,0 +1,27 @@
+    <aside class="sidebar" [class.sidebar--collapsed]="collapsed">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo">🔗</span>
+        <span class="sidebar__brand-text" *ngIf="!collapsed">Nexus CRM</span>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__section" *ngFor="let section of menuSections">
+          <div class="sidebar__section-title" *ngIf="!collapsed">{{ section.title }}</div>
+          <a
+            *ngFor="let item of section.items"
+            class="sidebar__link"
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__link--active"
+            [routerLinkActiveOptions]="{exact: item.route === '/'}"
+            [title]="collapsed ? item.label : ''"
+          >
+            <span class="sidebar__link-icon">{{ item.icon }}</span>
+            <span class="sidebar__link-label" *ngIf="!collapsed">{{ item.label }}</span>
+          </a>
+        </div>
+      </nav>
+
+      <button class="sidebar__toggle" (click)="toggle.emit()" [title]="collapsed ? 'Expand' : 'Collapse'">
+        {{ collapsed ? '▶' : '◀' }}
+      </button>
+    </aside>

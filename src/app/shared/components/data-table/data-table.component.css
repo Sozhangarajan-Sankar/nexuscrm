@@ -1,0 +1,106 @@
+    .table-wrapper {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      background: var(--bg-secondary);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+      user-select: none;
+    }
+    thead th.sortable {
+      cursor: pointer;
+    }
+    thead th.sortable:hover {
+      color: var(--accent-color);
+    }
+    .sort-indicator {
+      margin-left: 0.25rem;
+      font-size: 0.75rem;
+    }
+    tbody td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+    tbody tr:hover {
+      background: rgba(0,0,0,0.02);
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .actions-col {
+      width: 120px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .btn-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem 0.4rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .btn-icon:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    .btn-icon--danger:hover {
+      background: #fde8e8;
+    }
+    .table-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+    }
+    .page-info {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+    .pagination {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .btn-page {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8125rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: all 0.15s;
+    }
+    .btn-page:hover:not(:disabled) {
+      background: var(--accent-color);
+      color: #fff;
+      border-color: var(--accent-color);
+    }
+    .btn-page.active {
+      background: var(--accent-color);
+      color: #fff;
+      border-color: var(--accent-color);
+    }
+    .btn-page:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }

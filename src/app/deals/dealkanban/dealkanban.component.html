@@ -1,0 +1,29 @@
+    <div class="page-container">
+      <app-page-header title="Deal Pipeline (Kanban)">
+        <a routerLink="/deals" class="btn btn-outline">List View</a>
+        <a routerLink="/deals/save" class="btn btn-primary">+ Add Deal</a>
+      </app-page-header>
+
+      <div class="kanban-board">
+        <div class="kanban-column" *ngFor="let col of columns">
+          <div class="column-header">
+            <h3 class="column-title">{{ col.name }}</h3>
+            <span class="column-count">{{ getDealsForStage(col.name).length }}</span>
+          </div>
+          <div class="column-body">
+            <div class="deal-card" *ngFor="let deal of getDealsForStage(col.name)" [routerLink]="['/deals/view', deal.id]">
+              <h4 class="card-title">{{ deal.title }}</h4>
+              <div class="card-value">{{ deal.value | currency:deal.currency:'symbol':'1.2-0' }}</div>
+              <div class="card-meta">
+                <span class="card-customer">{{ getCustomerName(deal.customerId) }}</span>
+                <span class="card-probability">{{ deal.probability }}%</span>
+              </div>
+              <div class="card-progress"><div class="card-progress-fill" [style.width.%]="deal.probability"></div></div>
+            </div>
+            <div class="empty-column" *ngIf="getDealsForStage(col.name).length === 0">
+              No deals in this stage
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

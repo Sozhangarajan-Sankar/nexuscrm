@@ -1,0 +1,80 @@
+    <div class="page-container">
+      <app-page-header [title]="deal?.title || 'Deal Details'">
+        <a [routerLink]="['/deals/save', dealId]" class="btn btn-primary">Edit</a>
+        <button class="btn btn-danger" (click)="deleteDeal()">Delete</button>
+        <a routerLink="/deals" class="btn btn-outline">Back to List</a>
+      </app-page-header>
+
+      <div class="detail-grid" *ngIf="deal">
+        <div class="detail-card main-info">
+          <h2 class="deal-title">{{ deal.title }}</h2>
+          <div class="deal-value">{{ deal.value | currency:deal.currency:'symbol':'1.2-2' }}</div>
+          <div class="deal-meta">
+            <span class="badge" [ngClass]="getStageClass(deal.stage)">{{ deal.stage }}</span>
+            <span class="probability-badge">{{ deal.probability }}% probability</span>
+          </div>
+          <div class="probability-track">
+            <div class="track-bar"><div class="track-fill" [style.width.%]="deal.probability"></div></div>
+          </div>
+        </div>
+
+        <div class="detail-card customer-info">
+          <h3>Customer Information</h3>
+          <div class="info-row" *ngIf="customer">
+            <span class="info-label">Name</span>
+            <span class="info-value">{{ customer.firstName + ' ' + customer.lastName }}</span>
+          </div>
+          <div class="info-row" *ngIf="customer">
+            <span class="info-label">Company</span>
+            <span class="info-value">{{ customer.company }}</span>
+          </div>
+          <div class="info-row" *ngIf="customer">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ customer.email }}</span>
+          </div>
+          <div class="info-row" *ngIf="customer">
+            <span class="info-label">Phone</span>
+            <span class="info-value">{{ customer.phone }}</span>
+          </div>
+        </div>
+
+        <div class="detail-card deal-info">
+          <h3>Deal Details</h3>
+          <div class="info-row">
+            <span class="info-label">Expected Close</span>
+            <span class="info-value">{{ deal.expectedCloseDate | date:'longDate' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Assigned To</span>
+            <span class="info-value">{{ assignedUser ? assignedUser.firstName + ' ' + assignedUser.lastName : 'Unassigned' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Created</span>
+            <span class="info-value">{{ deal.createdAt | date:'medium' }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Updated</span>
+            <span class="info-value">{{ deal.updatedAt | date:'medium' }}</span>
+          </div>
+        </div>
+
+        <div class="detail-card notes-section">
+          <h3>Notes</h3>
+          <p class="notes-text">{{ deal.notes || 'No notes added.' }}</p>
+        </div>
+
+        <div class="detail-card timeline-section">
+          <h3>Activity Timeline</h3>
+          <div class="timeline">
+            <div class="timeline-item" *ngFor="let activity of activities">
+              <div class="timeline-dot" [ngClass]="activity.type"></div>
+              <div class="timeline-content">
+                <div class="timeline-action">{{ activity.action }}</div>
+                <div class="timeline-detail">{{ activity.detail }}</div>
+                <div class="timeline-date">{{ activity.date | date:'medium' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

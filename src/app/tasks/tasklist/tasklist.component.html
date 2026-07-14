@@ -1,0 +1,56 @@
+    <div class="page-container">
+      <app-page-header title="Tasks">
+        <a routerLink="/tasks/save" class="btn btn-primary">+ Add Task</a>
+        <a routerLink="/tasks/board" class="btn btn-secondary">Board View</a>
+      </app-page-header>
+
+      <div class="filters">
+        <input type="text" class="search-input" placeholder="Search tasks..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+        <select class="filter-select" [(ngModel)]="statusFilter" (change)="applyFilters()">
+          <option value="">All Statuses</option>
+          <option value="todo">To Do</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+        <select class="filter-select" [(ngModel)]="priorityFilter" (change)="applyFilters()">
+          <option value="">All Priorities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Assigned To</th>
+              <th>Due Date</th>
+              <th>Related To</th>
+              <th class="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of filteredTasks">
+              <td class="cell-title">{{ task.title }}</td>
+              <td><span class="badge" [ngClass]="getStatusClass(task.status)">{{ task.status }}</span></td>
+              <td><span class="badge" [ngClass]="getPriorityClass(task.priority)">{{ task.priority }}</span></td>
+              <td>{{ getUserName(task.assignedTo) }}</td>
+              <td>{{ task.dueDate | date:'mediumDate' }}</td>
+              <td>{{ getRelatedTo(task) }}</td>
+              <td class="actions-col">
+                <a [routerLink]="['/tasks/save', task.id]" class="btn btn-sm btn-outline">Edit</a>
+                <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id)">Delete</button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredTasks.length === 0">
+              <td colspan="7" class="empty-state">No tasks found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>

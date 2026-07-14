@@ -1,0 +1,15 @@
+.widget-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.widget-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0 0 1.25rem; }
+.list-container { display: flex; flex-direction: column; }
+.list-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); }
+.list-item:last-child { border-bottom: none; }
+.rank-badge { width: 24px; height: 24px; border-radius: 50%; background: var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); flex-shrink: 0; }
+.customer-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; flex-shrink: 0; }
+.customer-info { flex: 1; min-width: 0; }
+.customer-name { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
+.customer-company { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.125rem; }
+.customer-stats { display: flex; gap: 1rem; flex-shrink: 0; }
+.stat { display: flex; flex-direction: column; align-items: flex-end; }
+.stat-num { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
+.stat-lbl { font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; }
+.empty-state { text-align: center; padding: 2rem; color: var(--text-secondary); font-style: italic; }

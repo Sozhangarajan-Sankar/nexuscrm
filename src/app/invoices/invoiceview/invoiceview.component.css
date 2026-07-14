@@ -1,0 +1,49 @@
+.page-container { padding: 24px; max-width: 1100px; margin: 0 auto; }
+.invoice-wrapper { background: var(--bg-secondary); border-radius: var(--radius); box-shadow: var(--shadow); padding: 48px; margin-top: 8px; }
+.invoice-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 2px solid var(--border-color); }
+.company-logo { font-size: 24px; font-weight: 800; color: var(--accent-color); letter-spacing: -0.5px; }
+.company-tagline { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.invoice-title-section { text-align: right; }
+.invoice-title { font-size: 36px; font-weight: 800; color: var(--text-primary); margin: 0; letter-spacing: 2px; }
+.invoice-number { font-size: 16px; color: var(--text-secondary); margin: 4px 0 8px 0; font-family: 'Courier New', monospace; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+.badge-draft { background: rgba(148,163,184,0.15); color: #94a3b8; }
+.badge-sent { background: rgba(99,102,241,0.15); color: #6366f1; }
+.badge-paid { background: rgba(16,185,129,0.15); color: #10b981; }
+.badge-overdue { background: rgba(239,68,68,0.15); color: #ef4444; }
+.badge-cancelled { background: rgba(148,163,184,0.15); color: #94a3b8; }
+.invoice-info { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 32px; margin-bottom: 40px; }
+.info-block h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin: 0 0 12px 0; }
+.company-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.info-block p { font-size: 13px; color: var(--text-secondary); margin: 2px 0; line-height: 1.5; }
+.meta-block { justify-self: end; }
+.meta-row { display: flex; justify-content: space-between; gap: 24px; padding: 6px 0; font-size: 13px; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
+.meta-row.overdue { color: var(--danger); font-weight: 600; }
+.invoice-items { margin-bottom: 32px; }
+.items-table { width: 100%; border-collapse: collapse; }
+.items-table th { text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); background: var(--bg-primary); border-bottom: 2px solid var(--border-color); }
+.items-table td { padding: 14px 16px; font-size: 14px; color: var(--text-primary); border-bottom: 1px solid var(--border-color); }
+.items-table tr:last-child td { border-bottom: none; }
+.col-qty, .col-rate, .col-amount { text-align: right; width: 100px; }
+.col-amount { font-weight: 600; font-family: 'Courier New', monospace; }
+.invoice-totals { max-width: 400px; margin-left: auto; margin-bottom: 32px; }
+.totals-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
+.grand-total { font-size: 20px; font-weight: 700; color: var(--text-primary); border-bottom: none; padding-top: 12px; border-top: 2px solid var(--text-primary); }
+.invoice-notes { background: var(--bg-primary); border-radius: var(--radius); padding: 20px; margin-bottom: 32px; }
+.invoice-notes h3 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin: 0 0 8px 0; }
+.invoice-notes p { font-size: 13px; color: var(--text-primary); margin: 0; line-height: 1.6; }
+.invoice-footer { text-align: center; padding-top: 24px; border-top: 2px solid var(--border-color); }
+.invoice-footer p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; border: none; transition: all 0.15s; }
+.btn-primary { background: var(--accent-color); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { opacity: 0.9; }
+.btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
+@media print {
+  .page-container { padding: 0; }
+  .page-header { display: none !important; }
+  .invoice-wrapper { box-shadow: none; border-radius: 0; padding: 24px; }
+}
+@media (max-width: 768px) { .invoice-info { grid-template-columns: 1fr; } .invoice-header { flex-direction: column; } .invoice-title-section { text-align: left; margin-top: 16px; } }

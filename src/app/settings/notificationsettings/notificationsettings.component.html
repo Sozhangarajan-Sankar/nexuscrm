@@ -1,0 +1,28 @@
+<div class="notif-page">
+  <app-page-header title="Notification Settings"></app-page-header>
+
+  <div class="notif-form">
+    <div class="form-section">
+      <h2 class="section-title">Notification Preferences</h2>
+      <p class="section-desc">Choose which notifications you want to receive.</p>
+      <div class="toggle-list">
+        <div class="toggle-item" *ngFor="let item of toggles">
+          <div class="toggle-info">
+            <span class="toggle-label">{{ item.label }}</span>
+          </div>
+          <button type="button" class="toggle-switch" [class.active]="item.enabled" (click)="toggle(item.key)">
+            <span class="toggle-knob"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-primary" (click)="save()">Save Preferences</button>
+    </div>
+  </div>
+
+  <div class="notification" [ngClass]="{'show': showNotification}" [class.success]="notifType === 'success'">
+    {{ notifMessage }}
+  </div>
+</div>

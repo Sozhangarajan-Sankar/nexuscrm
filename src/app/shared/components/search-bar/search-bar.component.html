@@ -1,0 +1,11 @@
+    <div class="search-bar">
+      <span class="search-bar__icon">🔍</span>
+      <input
+        class="search-bar__input"
+        type="text"
+        [placeholder]="placeholder"
+        (input)="onInput($event)"
+        [value]="value"
+      />
+      <button class="search-bar__clear" *ngIf="value" (click)="clear()">✕</button>
+    </div>

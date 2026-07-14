@@ -1,0 +1,5 @@
+.dashboard-grid { display: flex; flex-direction: column; gap: 1.5rem; padding-bottom: 2rem; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.feeds-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 1024px) { .charts-row, .feeds-row { grid-template-columns: 1fr; } }

@@ -1,0 +1,53 @@
+<div class="page-container">
+  <app-page-header title="Invoices">
+    <a routerLink="/invoices/save" class="btn btn-primary">+ Create Invoice</a>
+  </app-page-header>
+
+  <div class="filters">
+    <input type="text" class="search-input" placeholder="Search invoices..." [(ngModel)]="searchQuery" (input)="applyFilters()">
+    <select class="filter-select" [(ngModel)]="statusFilter" (change)="applyFilters()">
+      <option value="">All Statuses</option>
+      <option value="draft">Draft</option>
+      <option value="sent">Sent</option>
+      <option value="paid">Paid</option>
+      <option value="overdue">Overdue</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </div>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Created</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inv of filteredInvoices">
+          <td class="cell-invoice">
+            <a [routerLink]="['/invoices/view', inv.id]" class="link">{{ inv.invoiceNumber }}</a>
+          </td>
+          <td>{{ getCustomerName(inv.customerId) }}</td>
+          <td class="cell-amount">{{ inv.total | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td><span class="badge" [ngClass]="getStatusClass(inv.status)">{{ inv.status }}</span></td>
+          <td>{{ inv.dueDate | date:'mediumDate' }}</td>
+          <td>{{ inv.createdAt | date:'mediumDate' }}</td>
+          <td class="actions-col">
+            <a [routerLink]="['/invoices/view', inv.id]" class="btn btn-sm btn-outline">View</a>
+            <a [routerLink]="['/invoices/save', inv.id]" class="btn btn-sm btn-outline">Edit</a>
+            <button class="btn btn-sm btn-danger" (click)="deleteInvoice(inv.id)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredInvoices.length === 0">
+          <td colspan="7" class="empty-state">No invoices found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

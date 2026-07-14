@@ -1,0 +1,80 @@
+<div class="page-container">
+  <app-page-header [title]="'Invoice ' + (invoice?.invoiceNumber || '')">
+    <a [routerLink]="['/invoices/save', invoiceId]" class="btn btn-primary">Edit</a>
+    <button class="btn btn-danger" (click)="deleteInvoice()">Delete</button>
+    <button class="btn btn-outline" (click)="printInvoice()">Print</button>
+    <a routerLink="/invoices" class="btn btn-outline">Back to List</a>
+  </app-page-header>
+
+  <div class="invoice-wrapper" id="invoice-print" *ngIf="invoice">
+    <div class="invoice-header">
+      <div class="invoice-brand">
+        <div class="company-logo">Nexus CRM</div>
+        <div class="company-tagline">Enterprise Solutions</div>
+      </div>
+      <div class="invoice-title-section">
+        <h1 class="invoice-title">INVOICE</h1>
+        <div class="invoice-number">{{ invoice.invoiceNumber }}</div>
+        <span class="badge" [ngClass]="getStatusClass(invoice.status)">{{ invoice.status }}</span>
+      </div>
+    </div>
+
+    <div class="invoice-info">
+      <div class="info-block">
+        <h3>From</h3>
+        <p class="company-name">Nexus CRM Inc.</p>
+        <p>100 Business Ave, Suite 500</p>
+        <p>San Francisco, CA 94105</p>
+        <p>United States</p>
+        <p>billing&#64;nexuscrm.com</p>
+      </div>
+      <div class="info-block" *ngIf="customer">
+        <h3>Bill To</h3>
+        <p class="company-name">{{ customer.firstName + ' ' + customer.lastName }}</p>
+        <p>{{ customer.company }}</p>
+        <p>{{ customer.email }}</p>
+      </div>
+      <div class="info-block meta-block">
+        <div class="meta-row"><span>Invoice Date:</span><span>{{ invoice.createdAt | date:'longDate' }}</span></div>
+        <div class="meta-row"><span>Due Date:</span><span>{{ invoice.dueDate | date:'longDate' }}</span></div>
+        <div class="meta-row" [ngClass]="{'overdue': isOverdue()}"><span>Status:</span><span>{{ invoice.status }}</span></div>
+      </div>
+    </div>
+
+    <div class="invoice-items">
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th class="col-qty">Qty</th>
+            <th class="col-rate">Rate</th>
+            <th class="col-amount">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoice.items">
+            <td>{{ item.description }}</td>
+            <td class="col-qty">{{ item.quantity }}</td>
+            <td class="col-rate">{{ item.rate | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="col-amount">{{ item.amount | currency:'USD':'symbol':'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="invoice-totals">
+      <div class="totals-row"><span>Subtotal</span><span>{{ invoice.subtotal | currency:'USD':'symbol':'1.2-2' }}</span></div>
+      <div class="totals-row"><span>Tax</span><span>{{ invoice.tax | currency:'USD':'symbol':'1.2-2' }}</span></div>
+      <div class="totals-row grand-total"><span>Total</span><span>{{ invoice.total | currency:'USD':'symbol':'1.2-2' }}</span></div>
+    </div>
+
+    <div class="invoice-notes" *ngIf="invoice.notes">
+      <h3>Notes</h3>
+      <p>{{ invoice.notes }}</p>
+    </div>
+
+    <div class="invoice-footer">
+      <p>Thank you for your business!</p>
+    </div>
+  </div>
+</div>

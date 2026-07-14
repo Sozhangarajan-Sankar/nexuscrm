@@ -1,0 +1,18 @@
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 999px;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+    .status-active, .status-open, .status-paid, .status-completed { background: #e6f7e6; color: #2e7d32; }
+    .status-inactive, .status-closed, .status-overdue, .status-cancelled { background: #fde8e8; color: #c62828; }
+    .status-pending, .status-in-progress, .status-partial { background: #fff8e1; color: #f57f17; }
+    .status-lead, .status-new { background: #e3f2fd; color: #1565c0; }
+    .status-won { background: #e8f5e9; color: #1b5e20; }
+    .status-lost { background: #fce4ec; color: #b71c1c; }
+    .status-sent { background: #e8eaf6; color: #283593; }
+    .status-draft { background: #f5f5f5; color: #616161; }
+    .status-default { background: #f0f0f0; color: var(--text-secondary); }
